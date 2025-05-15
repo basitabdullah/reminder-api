@@ -22,18 +22,15 @@ app.post("/api/reminders", async (req, res) => {
     const { date, time, message, reminderType } = req.body;
 
     if (!date || !time || !message || !reminderType) {
-      return res
-        .status(400)
-        .json({ success: false, error: "All fields are required" });
+      return res.status(400).json({ success: false, error: 'All fields are required' });
     }
 
-    const newReminder = new Reminder({ date, time, message, reminderType });
-    const savedReminder = await newReminder.save();
+    const savedReminder = await Reminder.create({ date, time, message, reminderType });
 
     res.status(201).json({ success: true, data: savedReminder });
   } catch (error) {
-    console.error("Error saving reminder:", error);
-    res.status(500).json({ success: false, error: "Server error" });
+    console.error('Error saving reminder:', error);
+    res.status(500).json({ success: false, error: 'Server error' });
   }
 });
 
