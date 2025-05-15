@@ -14,7 +14,7 @@ A simple Node.js + MongoDB API to save reminders with a message, date, time, and
 - ES Modules (`type: "module"`)
 
 
-## 🔧 sample json
+## 🔧 sample json (POST)
 
 {
   "date": "2025-05-20",
